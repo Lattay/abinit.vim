@@ -6,6 +6,11 @@ if exists("b:current_syntax")
     finish
 endif
 
+" If it is some contiguous non blank thing that does not match other rule, it
+" is trash: misspelled keyword, typo etc...
+syntax match abiTrash nextgroup=abiInvalidStatement /[^!=# ]\+/
+highlight link abiTrash Error
+
 syntax keyword abiKeyword nextgroup=abiValidStatement
     \ accuracy acell adpimd adpimd_gamma algalch amu angdeg asr atvshift autoparal
     \ auxc_ixc auxc_scal awtr bandpp bdberry bdeigrf bdgw berryopt berrysav berrystep
@@ -113,19 +118,20 @@ syntax keyword abiKeyword nextgroup=abiValidStatement
     \ getddb_filepath getdvdb_filepath getden_filepath getscr_filepath eph_ecutosc
     \ output_file indata_prefix outdata_prefix tmpdata_prefix pp_dirpath
     \ supercell_latt pseudos structure
-
 highlight link abiKeyword Keyword
-
-syntax match abiTrash nextgroup=abiInvalidStatement /[^!=# ]\+/
-highlight link abiTrash Error
 
 " the \v key means vim's very magic regex 
 syntax region abiComment start=/[#]/ end=/$/
 highlight link abiComment Comment
 
+" Constants 
 syntax match abiConstant contained ".TRUE."
 syntax match abiConstant contained ".FALSE."
-syntax match abiConstant contained "\v(([0-9]*\.)?[0-9]+E?-?[0-9]*\s?)*"
+highlight link abiConstant Constant
+
+" Strings
+syntax match abiString contained /"[^"]*"/
+highlight link abiString String
 
 " Integers
 syntax match abiNumber contained /\<[+-]\?\d\+\(_\a\w*\)\=\>/
@@ -141,12 +147,11 @@ syntax match abiNumber contained /\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>
 syntax match abiNumber contained /\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>/
 
 highlight link abiNumber Number
-highlight link abiConstant Constant
 
 syntax keyword abiUnit contained Ha Hartree Bohr Ry Rydberg Rydbergs eV K Angstr nm T Tesla S Sec Second
 highlight link abiUnit Constant
 
-syntax cluster abiStatement contains=abiConstant,abiNumber,abiUnit
+syntax cluster abiStatement contains=abiConstant,abiNumber,abiUnit,abiString
 
 syntax match abiValidStatement contains=@abiStatement nextgroup=abiComment / *[^#]*/
 highlight link abiValieStatement Statement
@@ -159,4 +164,4 @@ set colorcolumn=264
 syntax match abiLongLine /^.\{264,}$/
 highlight link abiLongLine Error
 
-let b:current_syntax = "INCAR"
+let b:current_syntax = "abinit_input"
