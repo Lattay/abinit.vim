@@ -154,4 +154,9 @@ highlight link abiValieStatement Statement
 syntax match abiInvalidStatement contains=@abiStatement nextgroup=abiComment  / *[A-Za-z][^#]*/
 highlight link abiInvalidStatement Error
 
+" Abinit consider line longer than 264 columns as errorneous
+set colorcolumn=264
+syntax match abiLongLine /^.\{264,}$/
+highlight link abiLongLine Error
+
 let b:current_syntax = "INCAR"
