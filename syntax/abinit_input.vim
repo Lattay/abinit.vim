@@ -11,114 +11,6 @@ endif
 syntax match abiTrash nextgroup=abiInvalidStatement /[^!=# ]\+/
 highlight link abiTrash Error
 
-syntax keyword abiKeyword nextgroup=abiValidStatement
-    \ accuracy acell adpimd adpimd_gamma algalch amu angdeg asr atvshift autoparal
-    \ auxc_ixc auxc_scal awtr bandpp bdberry bdeigrf bdgw berryopt berrysav berrystep
-    \ bfield bmass boxcenter boxcutmin brvltt bs_algorithm bs_calctype
-    \ bs_coulomb_term bs_coupling bs_eh_cutoff bs_exchange_term bs_freq_mesh
-    \ bs_hayd_term bs_haydock_niter bs_haydock_tol bs_interp_kmult bs_interp_m3_width
-    \ bs_interp_method bs_interp_mode bs_interp_prep bs_interp_rl_nb bs_loband
-    \ bs_nstates builtintest bxctmindg cd_customnimfrqs cd_frqim_method cd_full_grid
-    \ cd_halfway_freq cd_imfrqs cd_max_freq cd_subset_freq charge chempot chkdilatmx
-    \ chkexit chkprim chksymbreak chneut cineb_start constraint_kind cpuh cpum cpus
-    \ dvdb_qcache_mb d3e_pert1_atpol d3e_pert1_dir d3e_pert1_elfd d3e_pert1_phon
-    \ d3e_pert2_atpol d3e_pert2_dir d3e_pert2_elfd d3e_pert2_phon d3e_pert3_atpol
-    \ d3e_pert3_dir d3e_pert3_elfd d3e_pert3_phon ddamp ddb_ngqpt ddb_shiftq
-    \ delayperm chrgat densfor_pred densty dfield dfpt_sciss diecut diegap dielam
-    \ dielng diemac diemix diemixmag diismemory dilatmx dipdip dmatpawu dmatpuopt
-    \ dmatudiag dmft_charge_prec dmft_dc dmft_entropy dmft_kspectral_func dmft_iter
-    \ dmft_mxsf dmft_nlambda dmft_nwli dmft_nwlo dmft_occnd_imag dmft_read_occnd
-    \ dmft_rslf dmft_solv dmft_t2g dmft_tolfreq dmft_tollc dmftbandf dmftbandi
-    \ dmftcheck dmftctqmc_basis dmftctqmc_check dmftctqmc_correl dmftctqmc_gmove
-    \ dmftctqmc_grnns dmftctqmc_meas dmftctqmc_mov dmftctqmc_mrka dmftctqmc_order
-    \ dmftctqmc_triqs_nleg dmftqmc_l dmftqmc_n dmftqmc_seed dmftqmc_therm dosdeltae
-    \ dtion dynimage ecut ecuteps ecutsigx ecutsm ecutwfn effmass_free efield efmas
-    \ efmas_bands efmas_calc_dirs efmas_deg efmas_deg_tol efmas_dim efmas_dirs
-    \ efmas_n_dirs efmas_ntheta einterp elph2_imagden enunit eph_extrael eph_fermie
-    \ eph_frohlichm eph_fsewin eph_fsmear eph_intmeth eph_mustar eph_ngqpt_fine
-    \ eph_task eph_transport eshift esmear exchmix exchn2n3d extrapwf f4of2_sla
-    \ f6of2_sla fband fermie_nest fftalg fftcache fftgw fockdownsampling fockoptmix
-    \ freqim_alpha freqremax freqremin freqspmax freqspmin friction frzfermi
-    \ fxcartfactor ga_algor ga_fitness ga_n_rules ga_opt_percent ga_rules genafm
-    \ get1den get1wf getbscoup getbseig getbsreso getcell getddb getddk getdelfd
-    \ getdkdk getdkde getden getdvdb getefmas getgam_eig2nkq gethaydock getocc getqps
-    \ getscr getsuscep getvel getwfk getwfkfine getwfq getxcart getxred goprecon
-    \ goprecprm gpu_devices gpu_linalg_limit gw_customnfreqsp gw_freqsp
-    \ gw_frqim_inzgrid gw_frqre_inzgrid gw_frqre_tangrid gw_invalid_freq gw_nqlwl
-    \ gw_nstep gw_qlwl gw_qprange gw_sctype gw_sigxcore gw_toldfeig gwcalctyp gwcomp
-    \ gwencomp gwgamma gwls_band_index gwls_correlation gwls_diel_model gwls_exchange
-    \ gwls_first_seed gwls_kmax_analytic gwls_kmax_complement gwls_kmax_numeric
-    \ gwls_kmax_poles gwls_list_proj_freq gwls_model_parameter gwls_n_proj_freq
-    \ gwls_npt_gauss_quad gwls_nseeds gwls_print_debug gwls_recycle gwls_stern_kmax
-    \ gwmem gwpara gwrpacorr hmctt hmcsst hyb_mixing hyb_mixing_sr hyb_range_dft
-    \ hyb_range_fock iatcon iatfix iatfixx iatfixy iatfixz iatsph iboxcut icoulomb
-    \ icutcoul ieig2rf imgmov imgwfstor inclvkb intxc iomode ionmov iprcel iprcfc
-    \ iqpt irandom ird1den ird1wf irdbscoup irdbseig irdbsreso irdddb irdddk irdden
-    \ irddvdb irdefmas irdhaydock irdqps irdscr irdsuscep irdvdw irdwfk irdwfkfine
-    \ irdwfq iscf isecur istatimg istatr istatshft istwfk ixc ixc_sigma ixcpositron
-    \ ixcrot jdtset jellslab jfielddir jpawu kberry kpt kptbounds kptgw kptnrm kptns
-    \ kptns_hf kptopt kptrlatt kptrlen kssform ldaminushalf lexexch localrdwf
-    \ lotf_classic lotf_nitex lotf_nneigx lotf_version lpawu lw_flexo lw_qdrpl
-    \ macro_uj magcon_lambda magconon max_ncpus maxestep maxnsym mband mbpt_sciss
-    \ mdf_epsinf mdtemp mdwall mem_test mep_mxstep mep_solver mixprec mgfft mgfftdg
-    \ mixalch mixesimgf mpw mqgrid mqgriddg natcon natfix natfixx natfixy natfixz
-    \ natom natpawu natrd natsph natsph_extra natvshift nband nbandhf nbandkss
-    \ nbdblock nbdbuf nberry nc_xccc_gspace nconeq nctime ndivk ndivsm ndtset
-    \ ndynimage neb_algo neb_spring nelect nfft nfftdg nfreqim nfreqmidm nfreqre
-    \ nfreqsp ngfft ngfftdg ngkpt ngqpt nimage nkpath nkpt nkptgw nkpthf nline
-    \ nloc_alg nloc_mem nnos nnsclo nnsclohf nobj nomegasf nomegasi nomegasrd
-    \ nonlinear_info normpawu noseinert np_slk npband npfft nphf npimage npkpt nppert
-    \ npsp npspalch npspinor npulayit npvel npweps npwkss npwsigx npwwfn nqpt nqptdm
-    \ nscforder nshiftk nshiftq nspden nspinor nsppol nstep nsym ntime ntimimage
-    \ ntypalch ntypat ntyppure nucdipmom nwfshist nzchempot objaat objaax objan
-    \ objarf objaro objatr objbat objbax objbn objbrf objbro objbtr occ occopt
-    \ omegasimax omegasrdmax optcell optdriver optforces optnlxccc optstress orbmag
-    \ ortalg papiopt paral_atom paral_kgb paral_rf pawcpxocc pawcross pawecutdg
-    \ pawfatbnd pawlcutd pawlmix pawmixdg pawnhatxc pawnphi pawntheta pawnzlm
-    \ pawoptmix pawoptosc pawovlp pawprt_b pawprt_k pawprtden pawprtdos pawprtvol
-    \ pawprtwf pawspnorb pawstgylm pawsushat pawujat pawujrad pawujv pawusecp
-    \ pawxcdev ph_intmeth ph_ndivsm ph_ngqpt ph_nqpath ph_nqshift ph_qpath ph_qshift
-    \ ph_smear ph_wstep pimass pimd_constraint pitransform plowan_bandf plowan_bandi
-    \ plowan_compute plowan_iatom plowan_it plowan_lcalc plowan_natom plowan_nbl
-    \ plowan_nt plowan_projcalc plowan_realspace polcen posdoppler positron posnstep
-    \ posocc postoldfe postoldff ppmfrq ppmodel prepalw prepanl prepgkk prepscphon
-    \ prt1dm prtatlist prtbbb prtbltztrp prtcif prtden prtdensph prtdipole prtdos
-    \ prtdosm prtebands prtefg prtefmas prteig prtelf prtfc prtfull1wf prtfsurf
-    \ prtgden prtgeo prtgkk prtgsr prtkden prtkpt prtlden prtnabla prtnest prtphbands
-    \ prtphdos prtphsurf prtposcar prtpot prtprocar prtpsps prtspcur prtstm prtsuscep
-    \ prtvclmb prtvdw prtvha prtvhxc prtvol prtvolimg prtvpsp prtvxc prtwant prtwf
-    \ prtwf_full prtxml ptcharge ptgroupma pvelmax pw_unbal_thresh qmass qprtrb qpt
-    \ qptdm qptn qptnrm qptopt qptrlatt quadmom random_atpos ratsm ratsph
-    \ ratsph_extra rcut recefermi recgratio recnpath recnrec recptrott recrcut
-    \ rectesteg rectolden red_dfield red_efield red_efieldbar restartxf rf2_dkdk
-    \ rf2_dkde rf2_pert1_dir rf2_pert2_dir rfasr rfatpol rfddk rfdir rfelfd rfmagn
-    \ rfmeth rfphon rfstrs rfuser rhoqpmix rprim rprimd scalecart scphon_supercell
-    \ scphon_temp shiftk shiftq signperm slabwsrad slabzbeg slabzend slk_rankpp
-    \ smdelta so_psp spbroad spgaxor spgorig spgroup spgroupma spinat spinmagntarget
-    \ spmeth spnorbscl stmbias strfact string_algo strprecon strtarget symafm symchi
-    \ symdynmat symmorphi symrel symsigma td_maxene td_mexcit tfkinfunc tfw_toldfe
-    \ tim1rev timopt tl_nprccg tl_radius tnons toldfe toldff tolimg tolmxde tolmxf
-    \ tolrde tolrff tolsym tolvrs tolwfr tphysel tsmear typat ucrpa ucrpa_bands
-    \ ucrpa_window udtset upawu use_gemm_nonlop use_gpu_cuda use_nonscf_gkk use_slk
-    \ usedmatpu usedmft useexexch usefock usekden usepaw usepawu usepead usepotzero
-    \ userec useria userib useric userid userie userra userrb userrc userrd userre
-    \ usewvl usexcnhat useylm vaclst vacnum vacuum vacwidth vcutgeo vdw_df_acutmin
-    \ vdw_df_aratio vdw_df_damax vdw_df_damin vdw_df_dcut vdw_df_dratio vdw_df_dsoft
-    \ vdw_df_gcut vdw_df_ndpts vdw_df_ngpts vdw_df_nqpts vdw_df_nrpts vdw_df_nsmooth
-    \ vdw_df_phisoft vdw_df_qcut vdw_df_qratio vdw_df_rcut vdw_df_rsoft
-    \ vdw_df_threshold vdw_df_tolerance vdw_df_tweaks vdw_df_zab vdw_nfrag
-    \ vdw_supercell vdw_tol vdw_tol_3bt vdw_typfrag vdw_xc vel vel_cell vis vprtrb
-    \ w90iniprj w90prtunk wfmix wfoptalg wtatcon wtk wtq wvl_bigdft_comp wvl_crmult
-    \ wvl_frmult wvl_hgrid wvl_ngauss wvl_nprccg xc_denpos xc_tb09_c xcart xclevel
-    \ xred xredsph_extra xyzfile zcut zeemanfield ziontypat znucl tmesh prtkbff
-    \ sigma_ngkpt sigma_nshiftk sigma_shiftk wfk_task sigma_bsum_range prteliash
-    \ sigma_erange eph_tols_idelta eph_phrange transport_ngkpt eph_restart eph_stern
-    \ getkerange_filepath symv1scf dvdb_add_lr eph_np_pqbks eph_use_ftinterp
-    \ getpot_filepath getwfk_filepath getwfkfine_filepath getwfq_filepath
-    \ getddb_filepath getdvdb_filepath getden_filepath getscr_filepath eph_ecutosc
-    \ output_file indata_prefix outdata_prefix tmpdata_prefix pp_dirpath
-    \ supercell_latt pseudos structure
-highlight link abiKeyword Keyword
 
 " the \v key means vim's very magic regex 
 syntax region abiComment start=/[#]/ end=/$/
@@ -158,6 +50,828 @@ highlight link abiValieStatement Statement
 
 syntax match abiInvalidStatement contains=@abiStatement nextgroup=abiComment  / *[A-Za-z][^#]*/
 highlight link abiInvalidStatement Error
+syntax keyword abiKeyword nextgroup=abiValidStatement
+
+syntax match abiKeywork nextgroup=abiValidStatement /accuracy[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /acell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /adpimd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /adpimd_gamma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /algalch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /amu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /angdeg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /asr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /atvshift[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /autoparal[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /auxc_ixc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /auxc_scal[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /awtr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bandpp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bdberry[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bdeigrf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bdgw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /berryopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /berrysav[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /berrystep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bfield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bmass[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /boxcenter[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /boxcutmin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /brvltt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_algorithm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_calctype[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_coulomb_term[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_coupling[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_eh_cutoff[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_exchange_term[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_freq_mesh[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_hayd_term[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_haydock_niter[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_haydock_tol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_kmult[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_m3_width[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_method[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_mode[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_prep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_interp_rl_nb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_loband[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bs_nstates[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /builtintest[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /bxctmindg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_customnimfrqs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_frqim_method[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_full_grid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_halfway_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_imfrqs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_max_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cd_subset_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /charge[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chempot[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chkdilatmx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chkexit[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chkprim[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chksymbreak[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chneut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cineb_start[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /constraint_kind[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cpuh[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cpum[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /cpus[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dvdb_qcache_mb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert1_atpol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert1_dir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert1_elfd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert1_phon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert2_atpol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert2_dir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert2_elfd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert2_phon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert3_atpol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert3_dir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert3_elfd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /d3e_pert3_phon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ddamp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ddb_ngqpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ddb_shiftq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /delayperm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /chrgat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /densfor_pred[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /densty[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dfield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dfpt_sciss[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diecut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diegap[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dielam[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dielng[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diemac[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diemix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diemixmag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /diismemory[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dilatmx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dipdip[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmatpawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmatpuopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmatudiag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_charge_prec[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_dc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_entropy[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_kspectral_func[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_iter[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_mxsf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_nlambda[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_nwli[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_nwlo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_occnd_imag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_read_occnd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_rslf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_solv[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_t2g[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_tolfreq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmft_tollc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftbandf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftbandi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftcheck[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_basis[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_check[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_correl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_gmove[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_grnns[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_meas[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_mov[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_mrka[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_order[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftctqmc_triqs_nleg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftqmc_l[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftqmc_n[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftqmc_seed[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dmftqmc_therm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dosdeltae[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dtion[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dynimage[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ecut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ecuteps[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ecutsigx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ecutsm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ecutwfn[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /effmass_free[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_bands[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_calc_dirs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_deg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_deg_tol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_dim[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_dirs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_n_dirs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /efmas_ntheta[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /einterp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /elph2_imagden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /enunit[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_extrael[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_fermie[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_frohlichm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_fsewin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_fsmear[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_intmeth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_mustar[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_ngqpt_fine[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_task[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_transport[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eshift[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /esmear[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /exchmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /exchn2n3d[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /extrapwf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /f4of2_sla[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /f6of2_sla[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fband[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fermie_nest[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fftalg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fftcache[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fftgw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fockdownsampling[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fockoptmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /freqim_alpha[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /freqremax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /freqremin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /freqspmax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /freqspmin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /friction[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /frzfermi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /fxcartfactor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ga_algor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ga_fitness[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ga_n_rules[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ga_opt_percent[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ga_rules[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /genafm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /get1den[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /get1wf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getbscoup[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getbseig[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getbsreso[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getcell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getddb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getddk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getdelfd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getdkdk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getdkde[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getdvdb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getefmas[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getgam_eig2nkq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gethaydock[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getocc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getqps[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getscr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getsuscep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getvel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfkfine[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getxcart[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getxred[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /goprecon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /goprecprm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gpu_devices[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gpu_linalg_limit[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_customnfreqsp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_freqsp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_frqim_inzgrid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_frqre_inzgrid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_frqre_tangrid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_invalid_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_nqlwl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_nstep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_qlwl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_qprange[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_sctype[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_sigxcore[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gw_toldfeig[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwcalctyp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwcomp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwencomp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwgamma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_band_index[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_correlation[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_diel_model[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_exchange[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_first_seed[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_kmax_analytic[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_kmax_complement[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_kmax_numeric[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_kmax_poles[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_list_proj_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_model_parameter[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_n_proj_freq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_npt_gauss_quad[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_nseeds[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_print_debug[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_recycle[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwls_stern_kmax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwmem[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwpara[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /gwrpacorr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hmctt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hmcsst[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hyb_mixing[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hyb_mixing_sr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hyb_range_dft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /hyb_range_fock[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatcon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatfix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatfixx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatfixy[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatfixz[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iatsph[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iboxcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /icoulomb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /icutcoul[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ieig2rf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /imgmov[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /imgwfstor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /inclvkb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /intxc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iomode[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ionmov[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iprcel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iprcfc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iqpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irandom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ird1den[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ird1wf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdbscoup[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdbseig[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdbsreso[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdddb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdddk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irddvdb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdefmas[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdhaydock[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdqps[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdscr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdsuscep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdvdw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdwfk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdwfkfine[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /irdwfq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /iscf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /isecur[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /istatimg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /istatr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /istatshft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /istwfk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ixc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ixc_sigma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ixcpositron[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ixcrot[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /jdtset[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /jellslab[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /jfielddir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /jpawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kberry[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptbounds[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptgw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptnrm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptns[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptns_hf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptrlatt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kptrlen[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /kssform[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ldaminushalf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lexexch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /localrdwf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lotf_classic[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lotf_nitex[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lotf_nneigx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lotf_version[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lpawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lw_flexo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /lw_qdrpl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /macro_uj[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /magcon_lambda[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /magconon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /max_ncpus[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /maxestep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /maxnsym[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mband[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mbpt_sciss[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mdf_epsinf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mdtemp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mdwall[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mem_test[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mep_mxstep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mep_solver[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mixprec[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mgfft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mgfftdg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mixalch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mixesimgf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mpw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mqgrid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /mqgriddg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natcon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natfix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natfixx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natfixy[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natfixz[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natpawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natrd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natsph[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natsph_extra[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /natvshift[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nband[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nbandhf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nbandkss[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nbdblock[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nbdbuf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nberry[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nc_xccc_gspace[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nconeq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nctime[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ndivk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ndivsm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ndtset[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ndynimage[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /neb_algo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /neb_spring[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nelect[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfftdg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfreqim[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfreqmidm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfreqre[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nfreqsp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ngfft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ngfftdg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ngkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ngqpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nimage[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nkpath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nkptgw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nkpthf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nline[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nloc_alg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nloc_mem[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nnos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nnsclo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nnsclohf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nobj[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nomegasf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nomegasi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nomegasrd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nonlinear_info[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /normpawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /noseinert[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /np_slk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npband[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npfft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nphf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npimage[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nppert[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npsp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npspalch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npspinor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npulayit[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npvel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npweps[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npwkss[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npwsigx[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /npwwfn[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nqpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nqptdm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nscforder[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nshiftk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nshiftq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nspden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nspinor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nsppol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nstep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nsym[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ntime[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ntimimage[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ntypalch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ntypat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ntyppure[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nucdipmom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nwfshist[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /nzchempot[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objaat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objaax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objan[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objarf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objaro[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objatr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbn[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbrf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbro[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /objbtr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /occ[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /occopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /omegasimax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /omegasrdmax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /optcell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /optdriver[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /optforces[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /optnlxccc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /optstress[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /orbmag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ortalg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /papiopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /paral_atom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /paral_kgb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /paral_rf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawcpxocc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawcross[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawecutdg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawfatbnd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawlcutd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawlmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawmixdg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawnhatxc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawnphi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawntheta[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawnzlm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawoptmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawoptosc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawovlp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprt_b[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprt_k[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprtden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprtdos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprtvol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawprtwf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawspnorb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawstgylm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawsushat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawujat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawujrad[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawujv[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawusecp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pawxcdev[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_intmeth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_ndivsm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_ngqpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_nqpath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_nqshift[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_qpath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_qshift[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_smear[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ph_wstep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pimass[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pimd_constraint[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pitransform[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_bandf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_bandi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_compute[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_iatom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_it[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_lcalc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_natom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_nbl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_nt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_projcalc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /plowan_realspace[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /polcen[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /posdoppler[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /positron[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /posnstep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /posocc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /postoldfe[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /postoldff[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ppmfrq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ppmodel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prepalw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prepanl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prepgkk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prepscphon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prt1dm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtatlist[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtbbb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtbltztrp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtcif[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtdensph[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtdipole[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtdos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtdosm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtebands[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtefg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtefmas[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prteig[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtelf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtfc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtfull1wf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtfsurf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtgden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtgeo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtgkk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtgsr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtkden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtlden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtnabla[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtnest[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtphbands[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtphdos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtphsurf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtposcar[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtpot[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtprocar[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtpsps[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtspcur[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtstm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtsuscep[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvclmb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvdw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvha[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvhxc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvolimg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvpsp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtvxc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtwant[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtwf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtwf_full[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtxml[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ptcharge[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ptgroupma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pvelmax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pw_unbal_thresh[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qmass[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qprtrb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qptdm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qptn[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qptnrm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qptopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /qptrlatt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /quadmom[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /random_atpos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ratsm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ratsph[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ratsph_extra[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recefermi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recgratio[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recnpath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recnrec[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recptrott[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /recrcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rectesteg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rectolden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /red_dfield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /red_efield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /red_efieldbar[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /restartxf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rf2_dkdk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rf2_dkde[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rf2_pert1_dir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rf2_pert2_dir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfasr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfatpol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfddk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfdir[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfelfd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfmagn[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfmeth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfphon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfstrs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rfuser[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rhoqpmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rprim[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /rprimd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /scalecart[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /scphon_supercell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /scphon_temp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /shiftk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /shiftq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /signperm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /slabwsrad[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /slabzbeg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /slabzend[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /slk_rankpp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /smdelta[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /so_psp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spbroad[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spgaxor[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spgorig[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spgroup[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spgroupma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spinat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spinmagntarget[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spmeth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /spnorbscl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /stmbias[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /strfact[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /string_algo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /strprecon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /strtarget[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symafm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symchi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symdynmat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symmorphi[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symrel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symsigma[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /td_maxene[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /td_mexcit[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tfkinfunc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tfw_toldfe[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tim1rev[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /timopt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tl_nprccg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tl_radius[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tnons[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /toldfe[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /toldff[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolimg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolmxde[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolmxf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolrde[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolrff[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolsym[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolvrs[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tolwfr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tphysel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tsmear[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /typat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ucrpa[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ucrpa_bands[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ucrpa_window[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /udtset[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /upawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /use_gemm_nonlop[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /use_gpu_cuda[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /use_nonscf_gkk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /use_slk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usedmatpu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usedmft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /useexexch[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usefock[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usekden[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usepaw[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usepawu[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usepead[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usepotzero[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userec[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /useria[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userib[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /useric[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userie[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userra[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userrb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userrc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userrd[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /userre[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usewvl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /usexcnhat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /useylm[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vaclst[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vacnum[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vacuum[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vacwidth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vcutgeo[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_acutmin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_aratio[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_damax[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_damin[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_dcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_dratio[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_dsoft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_gcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_ndpts[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_ngpts[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_nqpts[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_nrpts[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_nsmooth[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_phisoft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_qcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_qratio[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_rcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_rsoft[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_threshold[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_tolerance[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_tweaks[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_df_zab[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_nfrag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_supercell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_tol[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_tol_3bt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_typfrag[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vdw_xc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vel_cell[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vis[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /vprtrb[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /w90iniprj[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /w90prtunk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wfmix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wfoptalg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wtatcon[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wtk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wtq[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_bigdft_comp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_crmult[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_frmult[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_hgrid[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_ngauss[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wvl_nprccg[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xc_denpos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xc_tb09_c[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xcart[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xclevel[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xred[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xredsph_extra[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /xyzfile[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /zcut[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /zeemanfield[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /ziontypat[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /znucl[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tmesh[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prtkbff[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /sigma_ngkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /sigma_nshiftk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /sigma_shiftk[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /wfk_task[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /sigma_bsum_range[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /prteliash[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /sigma_erange[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_tols_idelta[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_phrange[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /transport_ngkpt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_restart[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_stern[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getkerange_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /symv1scf[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /dvdb_add_lr[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_np_pqbks[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_use_ftinterp[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getpot_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfk_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfkfine_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getwfq_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getddb_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getdvdb_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getden_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /getscr_filepath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /eph_ecutosc[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /output_file[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /indata_prefix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /outdata_prefix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /tmpdata_prefix[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pp_dirpath[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /supercell_latt[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /pseudos[+?:0-9]*/
+syntax match abiKeywork nextgroup=abiValidStatement /structure[+?:0-9]*/
+highlight link abiKeyword Keyword
 
 " Abinit consider line longer than 264 columns as errorneous
 set colorcolumn=264
