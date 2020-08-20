@@ -6,872 +6,861 @@ if exists("b:current_syntax")
     finish
 endif
 
-" If it is some contiguous non blank thing that does not match other rule, it
-" is trash: misspelled keyword, typo etc...
-syntax match abiTrash nextgroup=abiInvalidStatement /\w\+/
-highlight link abiTrash Error
-
-" Strings
-syntax region abiString contained start=+"+ skip=+\\"+ end=+"+
-highlight link abiString String
-
-" Integers
-syntax match abiNumber contained /\<[+-]\?\d\+\(_\a\w*\)\=\>/
-" floating point number, without a decimal point
-syntax match abiNumber contained /\<\d\+[deq][-+]\=\d\+\(_\a\w*\)\=\>/
-" floating point number, starting with a decimal point
-syntax match abiNumber contained /\.\d\+\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
-" floating point number, no digits after decimal
-syntax match abiNumber contained /\<\d\+\.\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
-" floating point number, D or Q exponents
-syntax match abiNumber contained /\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
-" floating point number
-syntax match abiNumber contained /\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>/
-
-highlight link abiNumber Number
-
-syntax keyword abiUnit contained Ha Hartree Bohr Ry Rydberg Rydbergs eV K Angstr nm T Tesla S Sec Second
-highlight link abiUnit Constant
-
-syntax cluster abiStatement contains=abiConstant,abiNumber,abiUnit,abiString
-
-syntax match abiValidStatement contains=@abiStatement nextgroup=abiComment / *[^#]*/
-highlight link abiValidStatement Normal
-
-syntax match abiInvalidStatement contains=@abiStatement nextgroup=abiComment  / *[A-Za-z][^#]*/
-highlight link abiInvalidStatement Error
-
-
-syntax match abiKeyword nextgroup=abiValidStatement /\<accuracy[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<acell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<adpimd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<adpimd_gamma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<algalch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<amu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<angdeg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<asr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<atvshift[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<autoparal[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<auxc_ixc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<auxc_scal[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<awtr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bandpp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bdberry[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bdeigrf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bdgw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<berryopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<berrysav[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<berrystep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bfield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bmass[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<boxcenter[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<boxcutmin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<brvltt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_algorithm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_calctype[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_coulomb_term[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_coupling[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_eh_cutoff[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_exchange_term[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_freq_mesh[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_hayd_term[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_haydock_niter[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_haydock_tol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_kmult[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_m3_width[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_method[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_mode[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_prep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_interp_rl_nb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_loband[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bs_nstates[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<builtintest[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<bxctmindg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_customnimfrqs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_frqim_method[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_full_grid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_halfway_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_imfrqs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_max_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cd_subset_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<charge[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chempot[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chkdilatmx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chkexit[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chkprim[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chksymbreak[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chneut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cineb_start[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<constraint_kind[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cpuh[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cpum[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<cpus[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dvdb_qcache_mb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert1_atpol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert1_dir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert1_elfd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert1_phon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert2_atpol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert2_dir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert2_elfd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert2_phon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert3_atpol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert3_dir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert3_elfd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<d3e_pert3_phon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ddamp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ddb_ngqpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ddb_shiftq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<delayperm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<chrgat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<densfor_pred[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<densty[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dfield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dfpt_sciss[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diecut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diegap[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dielam[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dielng[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diemac[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diemix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diemixmag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<diismemory[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dilatmx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dipdip[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmatpawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmatpuopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmatudiag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_charge_prec[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_dc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_entropy[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_kspectral_func[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_iter[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_mxsf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_nlambda[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_nwli[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_nwlo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_occnd_imag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_read_occnd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_rslf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_solv[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_t2g[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_tolfreq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmft_tollc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftbandf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftbandi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftcheck[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_basis[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_check[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_correl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_gmove[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_grnns[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_meas[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_mov[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_mrka[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_order[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftctqmc_triqs_nleg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftqmc_l[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftqmc_n[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftqmc_seed[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dmftqmc_therm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dosdeltae[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dtion[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dynimage[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ecut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ecuteps[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ecutsigx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ecutsm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ecutwfn[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<effmass_free[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_bands[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_calc_dirs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_deg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_deg_tol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_dim[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_dirs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_n_dirs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<efmas_ntheta[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<einterp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<elph2_imagden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<enunit[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_extrael[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_fermie[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_frohlichm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_fsewin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_fsmear[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_intmeth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_mustar[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_ngqpt_fine[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_task[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_transport[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eshift[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<esmear[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<exchmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<exchn2n3d[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<extrapwf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<f4of2_sla[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<f6of2_sla[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fband[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fermie_nest[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fftalg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fftcache[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fftgw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fockdownsampling[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fockoptmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<freqim_alpha[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<freqremax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<freqremin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<freqspmax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<freqspmin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<friction[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<frzfermi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<fxcartfactor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ga_algor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ga_fitness[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ga_n_rules[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ga_opt_percent[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ga_rules[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<genafm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<get1den[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<get1wf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getbscoup[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getbseig[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getbsreso[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getcell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getddb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getddk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getdelfd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getdkdk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getdkde[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getdvdb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getefmas[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getgam_eig2nkq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gethaydock[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getocc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getqps[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getscr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getsuscep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getvel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfkfine[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getxcart[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getxred[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<goprecon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<goprecprm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gpu_devices[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gpu_linalg_limit[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_customnfreqsp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_freqsp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_frqim_inzgrid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_frqre_inzgrid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_frqre_tangrid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_invalid_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_nqlwl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_nstep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_qlwl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_qprange[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_sctype[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_sigxcore[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gw_toldfeig[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwcalctyp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwcomp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwencomp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwgamma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_band_index[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_correlation[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_diel_model[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_exchange[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_first_seed[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_kmax_analytic[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_kmax_complement[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_kmax_numeric[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_kmax_poles[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_list_proj_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_model_parameter[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_n_proj_freq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_npt_gauss_quad[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_nseeds[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_print_debug[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_recycle[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwls_stern_kmax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwmem[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwpara[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<gwrpacorr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hmctt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hmcsst[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hyb_mixing[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hyb_mixing_sr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hyb_range_dft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<hyb_range_fock[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatcon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatfix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatfixx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatfixy[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatfixz[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iatsph[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iboxcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<icoulomb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<icutcoul[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ieig2rf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<imgmov[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<imgwfstor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<inclvkb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<intxc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iomode[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ionmov[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iprcel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iprcfc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iqpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irandom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ird1den[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ird1wf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdbscoup[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdbseig[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdbsreso[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdddb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdddk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irddvdb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdefmas[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdhaydock[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdqps[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdscr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdsuscep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdvdw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdwfk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdwfkfine[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<irdwfq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<iscf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<isecur[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<istatimg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<istatr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<istatshft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<istwfk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ixc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ixc_sigma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ixcpositron[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ixcrot[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<jdtset[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<jellslab[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<jfielddir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<jpawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kberry[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptbounds[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptgw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptnrm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptns[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptns_hf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptrlatt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kptrlen[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<kssform[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ldaminushalf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lexexch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<localrdwf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lotf_classic[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lotf_nitex[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lotf_nneigx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lotf_version[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lpawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lw_flexo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<lw_qdrpl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<macro_uj[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<magcon_lambda[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<magconon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<max_ncpus[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<maxestep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<maxnsym[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mband[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mbpt_sciss[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mdf_epsinf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mdtemp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mdwall[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mem_test[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mep_mxstep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mep_solver[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mixprec[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mgfft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mgfftdg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mixalch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mixesimgf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mpw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mqgrid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<mqgriddg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natcon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natfix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natfixx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natfixy[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natfixz[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natpawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natrd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natsph[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natsph_extra[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<natvshift[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nband[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nbandhf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nbandkss[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nbdblock[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nbdbuf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nberry[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nc_xccc_gspace[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nconeq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nctime[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ndivk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ndivsm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ndtset[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ndynimage[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<neb_algo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<neb_spring[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nelect[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfftdg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfreqim[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfreqmidm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfreqre[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nfreqsp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ngfft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ngfftdg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ngkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ngqpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nimage[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nkpath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nkptgw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nkpthf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nline[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nloc_alg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nloc_mem[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nnos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nnsclo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nnsclohf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nobj[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nomegasf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nomegasi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nomegasrd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nonlinear_info[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<normpawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<noseinert[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<np_slk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npband[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npfft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nphf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npimage[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nppert[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npsp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npspalch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npspinor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npulayit[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npvel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npweps[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npwkss[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npwsigx[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<npwwfn[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nqpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nqptdm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nscforder[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nshiftk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nshiftq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nspden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nspinor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nsppol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nstep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nsym[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ntime[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ntimimage[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ntypalch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ntypat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ntyppure[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nucdipmom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nwfshist[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<nzchempot[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objaat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objaax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objan[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objarf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objaro[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objatr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbn[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbrf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbro[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<objbtr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<occ[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<occopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<omegasimax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<omegasrdmax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<optcell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<optdriver[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<optforces[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<optnlxccc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<optstress[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<orbmag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ortalg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<papiopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<paral_atom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<paral_kgb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<paral_rf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawcpxocc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawcross[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawecutdg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawfatbnd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawlcutd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawlmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawmixdg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawnhatxc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawnphi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawntheta[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawnzlm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawoptmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawoptosc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawovlp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprt_b[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprt_k[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprtden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprtdos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprtvol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawprtwf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawspnorb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawstgylm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawsushat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawujat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawujrad[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawujv[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawusecp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pawxcdev[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_intmeth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_ndivsm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_ngqpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_nqpath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_nqshift[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_qpath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_qshift[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_smear[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ph_wstep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pimass[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pimd_constraint[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pitransform[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_bandf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_bandi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_compute[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_iatom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_it[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_lcalc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_natom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_nbl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_nt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_projcalc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<plowan_realspace[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<polcen[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<posdoppler[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<positron[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<posnstep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<posocc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<postoldfe[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<postoldff[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ppmfrq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ppmodel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prepalw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prepanl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prepgkk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prepscphon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prt1dm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtatlist[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtbbb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtbltztrp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtcif[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtdensph[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtdipole[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtdos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtdosm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtebands[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtefg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtefmas[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prteig[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtelf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtfc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtfull1wf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtfsurf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtgden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtgeo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtgkk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtgsr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtkden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtlden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtnabla[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtnest[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtphbands[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtphdos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtphsurf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtposcar[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtpot[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtprocar[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtpsps[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtspcur[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtstm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtsuscep[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvclmb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvdw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvha[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvhxc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvolimg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvpsp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtvxc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtwant[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtwf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtwf_full[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtxml[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ptcharge[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ptgroupma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pvelmax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pw_unbal_thresh[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qmass[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qprtrb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qptdm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qptn[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qptnrm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qptopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<qptrlatt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<quadmom[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<random_atpos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ratsm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ratsph[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ratsph_extra[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recefermi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recgratio[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recnpath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recnrec[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recptrott[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<recrcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rectesteg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rectolden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<red_dfield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<red_efield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<red_efieldbar[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<restartxf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rf2_dkdk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rf2_dkde[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rf2_pert1_dir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rf2_pert2_dir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfasr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfatpol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfddk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfdir[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfelfd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfmagn[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfmeth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfphon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfstrs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rfuser[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rhoqpmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rprim[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<rprimd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<scalecart[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<scphon_supercell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<scphon_temp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<shiftk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<shiftq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<signperm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<slabwsrad[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<slabzbeg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<slabzend[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<slk_rankpp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<smdelta[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<so_psp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spbroad[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spgaxor[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spgorig[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spgroup[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spgroupma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spinat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spinmagntarget[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spmeth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<spnorbscl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<stmbias[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<strfact[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<string_algo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<strprecon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<strtarget[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symafm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symchi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symdynmat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symmorphi[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symrel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symsigma[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<td_maxene[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<td_mexcit[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tfkinfunc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tfw_toldfe[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tim1rev[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<timopt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tl_nprccg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tl_radius[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tnons[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<toldfe[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<toldff[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolimg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolmxde[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolmxf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolrde[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolrff[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolsym[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolvrs[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tolwfr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tphysel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tsmear[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<typat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ucrpa[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ucrpa_bands[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ucrpa_window[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<udtset[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<upawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<use_gemm_nonlop[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<use_gpu_cuda[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<use_nonscf_gkk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<use_slk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usedmatpu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usedmft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<useexexch[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usefock[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usekden[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usepaw[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usepawu[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usepead[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usepotzero[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userec[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<useria[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userib[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<useric[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userie[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userra[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userrb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userrc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userrd[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<userre[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usewvl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<usexcnhat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<useylm[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vaclst[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vacnum[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vacuum[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vacwidth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vcutgeo[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_acutmin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_aratio[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_damax[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_damin[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_dcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_dratio[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_dsoft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_gcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_ndpts[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_ngpts[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_nqpts[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_nrpts[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_nsmooth[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_phisoft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_qcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_qratio[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_rcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_rsoft[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_threshold[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_tolerance[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_tweaks[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_df_zab[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_nfrag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_supercell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_tol[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_tol_3bt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_typfrag[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vdw_xc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vel_cell[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vis[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<vprtrb[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<w90iniprj[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<w90prtunk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wfmix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wfoptalg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wtatcon[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wtk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wtq[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_bigdft_comp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_crmult[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_frmult[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_hgrid[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_ngauss[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wvl_nprccg[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xc_denpos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xc_tb09_c[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xcart[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xclevel[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xred[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xredsph_extra[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<xyzfile[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<zcut[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<zeemanfield[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<ziontypat[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<znucl[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tmesh[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prtkbff[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<sigma_ngkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<sigma_nshiftk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<sigma_shiftk[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<wfk_task[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<sigma_bsum_range[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<prteliash[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<sigma_erange[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_tols_idelta[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_phrange[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<transport_ngkpt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_restart[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_stern[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getkerange_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<symv1scf[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<dvdb_add_lr[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_np_pqbks[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_use_ftinterp[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getpot_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfk_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfkfine_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getwfq_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getddb_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getdvdb_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getden_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<getscr_filepath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<eph_ecutosc[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<output_file[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<indata_prefix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<outdata_prefix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<tmpdata_prefix[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pp_dirpath[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<supercell_latt[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<pseudos[+?:0-9]*\>/
-syntax match abiKeyword nextgroup=abiValidStatement /\<structure[+?:0-9]*\>/
-highlight link abiKeyword Keyword
-
 syntax region abiComment start=/#/ end=/$/
 highlight link abiComment Comment
-
-" A line can
-syntax match abiLineStart /^/ skipwhite nextgroup=abiTrash,abiKeyword,abiNumber,abiConstant,abiComment
 
 " Abinit consider line longer than 264 columns as errorneous
 set colorcolumn=264
 syntax match abiLongLine /^.\{264,}$/
 highlight link abiLongLine Error
+
+" If it is some contiguous non blank thing that does not match other rule, it
+" is trash: misspelled keyword, typo etc...
+syntax match abiTrash  /\w\+/
+highlight link abiTrash Error
+
+" Strings
+syntax region abiString  start=+"+ skip=+\\"+ end=+"+
+highlight link abiString String
+
+" Integers
+syntax match abiNumber  /\<[+-]\?\d\+\(_\a\w*\)\=\>/
+" floating point number, without a decimal point
+syntax match abiNumber  /\<\d\+[deq][-+]\=\d\+\(_\a\w*\)\=\>/
+" floating point number, starting with a decimal point
+syntax match abiNumber  /\.\d\+\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+" floating point number, no digits after decimal
+syntax match abiNumber  /\<\d\+\.\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+" floating point number, D or Q exponents
+syntax match abiNumber  /\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+" floating point number
+syntax match abiNumber  /\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+
+highlight link abiNumber Number
+
+syntax keyword abiUnit  Ha Hartree Bohr Ry Rydberg Rydbergs eV K Angstr nm T Tesla S Sec Second
+highlight link abiUnit Constant
+
+
+syntax match abiKeyword /\<accuracy[+?:0-9]*\>/
+syntax match abiKeyword /\<acell[+?:0-9]*\>/
+syntax match abiKeyword /\<adpimd[+?:0-9]*\>/
+syntax match abiKeyword /\<adpimd_gamma[+?:0-9]*\>/
+syntax match abiKeyword /\<algalch[+?:0-9]*\>/
+syntax match abiKeyword /\<amu[+?:0-9]*\>/
+syntax match abiKeyword /\<angdeg[+?:0-9]*\>/
+syntax match abiKeyword /\<asr[+?:0-9]*\>/
+syntax match abiKeyword /\<atvshift[+?:0-9]*\>/
+syntax match abiKeyword /\<autoparal[+?:0-9]*\>/
+syntax match abiKeyword /\<auxc_ixc[+?:0-9]*\>/
+syntax match abiKeyword /\<auxc_scal[+?:0-9]*\>/
+syntax match abiKeyword /\<awtr[+?:0-9]*\>/
+syntax match abiKeyword /\<bandpp[+?:0-9]*\>/
+syntax match abiKeyword /\<bdberry[+?:0-9]*\>/
+syntax match abiKeyword /\<bdeigrf[+?:0-9]*\>/
+syntax match abiKeyword /\<bdgw[+?:0-9]*\>/
+syntax match abiKeyword /\<berryopt[+?:0-9]*\>/
+syntax match abiKeyword /\<berrysav[+?:0-9]*\>/
+syntax match abiKeyword /\<berrystep[+?:0-9]*\>/
+syntax match abiKeyword /\<bfield[+?:0-9]*\>/
+syntax match abiKeyword /\<bmass[+?:0-9]*\>/
+syntax match abiKeyword /\<boxcenter[+?:0-9]*\>/
+syntax match abiKeyword /\<boxcutmin[+?:0-9]*\>/
+syntax match abiKeyword /\<brvltt[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_algorithm[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_calctype[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_coulomb_term[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_coupling[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_eh_cutoff[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_exchange_term[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_freq_mesh[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_hayd_term[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_haydock_niter[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_haydock_tol[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_kmult[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_m3_width[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_method[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_mode[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_prep[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_interp_rl_nb[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_loband[+?:0-9]*\>/
+syntax match abiKeyword /\<bs_nstates[+?:0-9]*\>/
+syntax match abiKeyword /\<builtintest[+?:0-9]*\>/
+syntax match abiKeyword /\<bxctmindg[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_customnimfrqs[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_frqim_method[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_full_grid[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_halfway_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_imfrqs[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_max_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<cd_subset_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<charge[+?:0-9]*\>/
+syntax match abiKeyword /\<chempot[+?:0-9]*\>/
+syntax match abiKeyword /\<chkdilatmx[+?:0-9]*\>/
+syntax match abiKeyword /\<chkexit[+?:0-9]*\>/
+syntax match abiKeyword /\<chkprim[+?:0-9]*\>/
+syntax match abiKeyword /\<chksymbreak[+?:0-9]*\>/
+syntax match abiKeyword /\<chneut[+?:0-9]*\>/
+syntax match abiKeyword /\<cineb_start[+?:0-9]*\>/
+syntax match abiKeyword /\<constraint_kind[+?:0-9]*\>/
+syntax match abiKeyword /\<cpuh[+?:0-9]*\>/
+syntax match abiKeyword /\<cpum[+?:0-9]*\>/
+syntax match abiKeyword /\<cpus[+?:0-9]*\>/
+syntax match abiKeyword /\<dvdb_qcache_mb[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert1_atpol[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert1_dir[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert1_elfd[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert1_phon[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert2_atpol[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert2_dir[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert2_elfd[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert2_phon[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert3_atpol[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert3_dir[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert3_elfd[+?:0-9]*\>/
+syntax match abiKeyword /\<d3e_pert3_phon[+?:0-9]*\>/
+syntax match abiKeyword /\<ddamp[+?:0-9]*\>/
+syntax match abiKeyword /\<ddb_ngqpt[+?:0-9]*\>/
+syntax match abiKeyword /\<ddb_shiftq[+?:0-9]*\>/
+syntax match abiKeyword /\<delayperm[+?:0-9]*\>/
+syntax match abiKeyword /\<chrgat[+?:0-9]*\>/
+syntax match abiKeyword /\<densfor_pred[+?:0-9]*\>/
+syntax match abiKeyword /\<densty[+?:0-9]*\>/
+syntax match abiKeyword /\<dfield[+?:0-9]*\>/
+syntax match abiKeyword /\<dfpt_sciss[+?:0-9]*\>/
+syntax match abiKeyword /\<diecut[+?:0-9]*\>/
+syntax match abiKeyword /\<diegap[+?:0-9]*\>/
+syntax match abiKeyword /\<dielam[+?:0-9]*\>/
+syntax match abiKeyword /\<dielng[+?:0-9]*\>/
+syntax match abiKeyword /\<diemac[+?:0-9]*\>/
+syntax match abiKeyword /\<diemix[+?:0-9]*\>/
+syntax match abiKeyword /\<diemixmag[+?:0-9]*\>/
+syntax match abiKeyword /\<diismemory[+?:0-9]*\>/
+syntax match abiKeyword /\<dilatmx[+?:0-9]*\>/
+syntax match abiKeyword /\<dipdip[+?:0-9]*\>/
+syntax match abiKeyword /\<dmatpawu[+?:0-9]*\>/
+syntax match abiKeyword /\<dmatpuopt[+?:0-9]*\>/
+syntax match abiKeyword /\<dmatudiag[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_charge_prec[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_dc[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_entropy[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_kspectral_func[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_iter[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_mxsf[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_nlambda[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_nwli[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_nwlo[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_occnd_imag[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_read_occnd[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_rslf[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_solv[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_t2g[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_tolfreq[+?:0-9]*\>/
+syntax match abiKeyword /\<dmft_tollc[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftbandf[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftbandi[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftcheck[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_basis[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_check[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_correl[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_gmove[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_grnns[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_meas[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_mov[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_mrka[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_order[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftctqmc_triqs_nleg[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftqmc_l[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftqmc_n[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftqmc_seed[+?:0-9]*\>/
+syntax match abiKeyword /\<dmftqmc_therm[+?:0-9]*\>/
+syntax match abiKeyword /\<dosdeltae[+?:0-9]*\>/
+syntax match abiKeyword /\<dtion[+?:0-9]*\>/
+syntax match abiKeyword /\<dynimage[+?:0-9]*\>/
+syntax match abiKeyword /\<ecut[+?:0-9]*\>/
+syntax match abiKeyword /\<ecuteps[+?:0-9]*\>/
+syntax match abiKeyword /\<ecutsigx[+?:0-9]*\>/
+syntax match abiKeyword /\<ecutsm[+?:0-9]*\>/
+syntax match abiKeyword /\<ecutwfn[+?:0-9]*\>/
+syntax match abiKeyword /\<effmass_free[+?:0-9]*\>/
+syntax match abiKeyword /\<efield[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_bands[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_calc_dirs[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_deg[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_deg_tol[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_dim[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_dirs[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_n_dirs[+?:0-9]*\>/
+syntax match abiKeyword /\<efmas_ntheta[+?:0-9]*\>/
+syntax match abiKeyword /\<einterp[+?:0-9]*\>/
+syntax match abiKeyword /\<elph2_imagden[+?:0-9]*\>/
+syntax match abiKeyword /\<enunit[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_extrael[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_fermie[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_frohlichm[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_fsewin[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_fsmear[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_intmeth[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_mustar[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_ngqpt_fine[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_task[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_transport[+?:0-9]*\>/
+syntax match abiKeyword /\<eshift[+?:0-9]*\>/
+syntax match abiKeyword /\<esmear[+?:0-9]*\>/
+syntax match abiKeyword /\<exchmix[+?:0-9]*\>/
+syntax match abiKeyword /\<exchn2n3d[+?:0-9]*\>/
+syntax match abiKeyword /\<extrapwf[+?:0-9]*\>/
+syntax match abiKeyword /\<f4of2_sla[+?:0-9]*\>/
+syntax match abiKeyword /\<f6of2_sla[+?:0-9]*\>/
+syntax match abiKeyword /\<fband[+?:0-9]*\>/
+syntax match abiKeyword /\<fermie_nest[+?:0-9]*\>/
+syntax match abiKeyword /\<fftalg[+?:0-9]*\>/
+syntax match abiKeyword /\<fftcache[+?:0-9]*\>/
+syntax match abiKeyword /\<fftgw[+?:0-9]*\>/
+syntax match abiKeyword /\<fockdownsampling[+?:0-9]*\>/
+syntax match abiKeyword /\<fockoptmix[+?:0-9]*\>/
+syntax match abiKeyword /\<freqim_alpha[+?:0-9]*\>/
+syntax match abiKeyword /\<freqremax[+?:0-9]*\>/
+syntax match abiKeyword /\<freqremin[+?:0-9]*\>/
+syntax match abiKeyword /\<freqspmax[+?:0-9]*\>/
+syntax match abiKeyword /\<freqspmin[+?:0-9]*\>/
+syntax match abiKeyword /\<friction[+?:0-9]*\>/
+syntax match abiKeyword /\<frzfermi[+?:0-9]*\>/
+syntax match abiKeyword /\<fxcartfactor[+?:0-9]*\>/
+syntax match abiKeyword /\<ga_algor[+?:0-9]*\>/
+syntax match abiKeyword /\<ga_fitness[+?:0-9]*\>/
+syntax match abiKeyword /\<ga_n_rules[+?:0-9]*\>/
+syntax match abiKeyword /\<ga_opt_percent[+?:0-9]*\>/
+syntax match abiKeyword /\<ga_rules[+?:0-9]*\>/
+syntax match abiKeyword /\<genafm[+?:0-9]*\>/
+syntax match abiKeyword /\<get1den[+?:0-9]*\>/
+syntax match abiKeyword /\<get1wf[+?:0-9]*\>/
+syntax match abiKeyword /\<getbscoup[+?:0-9]*\>/
+syntax match abiKeyword /\<getbseig[+?:0-9]*\>/
+syntax match abiKeyword /\<getbsreso[+?:0-9]*\>/
+syntax match abiKeyword /\<getcell[+?:0-9]*\>/
+syntax match abiKeyword /\<getddb[+?:0-9]*\>/
+syntax match abiKeyword /\<getddk[+?:0-9]*\>/
+syntax match abiKeyword /\<getdelfd[+?:0-9]*\>/
+syntax match abiKeyword /\<getdkdk[+?:0-9]*\>/
+syntax match abiKeyword /\<getdkde[+?:0-9]*\>/
+syntax match abiKeyword /\<getden[+?:0-9]*\>/
+syntax match abiKeyword /\<getdvdb[+?:0-9]*\>/
+syntax match abiKeyword /\<getefmas[+?:0-9]*\>/
+syntax match abiKeyword /\<getgam_eig2nkq[+?:0-9]*\>/
+syntax match abiKeyword /\<gethaydock[+?:0-9]*\>/
+syntax match abiKeyword /\<getocc[+?:0-9]*\>/
+syntax match abiKeyword /\<getqps[+?:0-9]*\>/
+syntax match abiKeyword /\<getscr[+?:0-9]*\>/
+syntax match abiKeyword /\<getsuscep[+?:0-9]*\>/
+syntax match abiKeyword /\<getvel[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfk[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfkfine[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfq[+?:0-9]*\>/
+syntax match abiKeyword /\<getxcart[+?:0-9]*\>/
+syntax match abiKeyword /\<getxred[+?:0-9]*\>/
+syntax match abiKeyword /\<goprecon[+?:0-9]*\>/
+syntax match abiKeyword /\<goprecprm[+?:0-9]*\>/
+syntax match abiKeyword /\<gpu_devices[+?:0-9]*\>/
+syntax match abiKeyword /\<gpu_linalg_limit[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_customnfreqsp[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_freqsp[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_frqim_inzgrid[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_frqre_inzgrid[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_frqre_tangrid[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_invalid_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_nqlwl[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_nstep[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_qlwl[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_qprange[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_sctype[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_sigxcore[+?:0-9]*\>/
+syntax match abiKeyword /\<gw_toldfeig[+?:0-9]*\>/
+syntax match abiKeyword /\<gwcalctyp[+?:0-9]*\>/
+syntax match abiKeyword /\<gwcomp[+?:0-9]*\>/
+syntax match abiKeyword /\<gwencomp[+?:0-9]*\>/
+syntax match abiKeyword /\<gwgamma[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_band_index[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_correlation[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_diel_model[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_exchange[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_first_seed[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_kmax_analytic[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_kmax_complement[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_kmax_numeric[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_kmax_poles[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_list_proj_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_model_parameter[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_n_proj_freq[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_npt_gauss_quad[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_nseeds[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_print_debug[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_recycle[+?:0-9]*\>/
+syntax match abiKeyword /\<gwls_stern_kmax[+?:0-9]*\>/
+syntax match abiKeyword /\<gwmem[+?:0-9]*\>/
+syntax match abiKeyword /\<gwpara[+?:0-9]*\>/
+syntax match abiKeyword /\<gwrpacorr[+?:0-9]*\>/
+syntax match abiKeyword /\<hmctt[+?:0-9]*\>/
+syntax match abiKeyword /\<hmcsst[+?:0-9]*\>/
+syntax match abiKeyword /\<hyb_mixing[+?:0-9]*\>/
+syntax match abiKeyword /\<hyb_mixing_sr[+?:0-9]*\>/
+syntax match abiKeyword /\<hyb_range_dft[+?:0-9]*\>/
+syntax match abiKeyword /\<hyb_range_fock[+?:0-9]*\>/
+syntax match abiKeyword /\<iatcon[+?:0-9]*\>/
+syntax match abiKeyword /\<iatfix[+?:0-9]*\>/
+syntax match abiKeyword /\<iatfixx[+?:0-9]*\>/
+syntax match abiKeyword /\<iatfixy[+?:0-9]*\>/
+syntax match abiKeyword /\<iatfixz[+?:0-9]*\>/
+syntax match abiKeyword /\<iatsph[+?:0-9]*\>/
+syntax match abiKeyword /\<iboxcut[+?:0-9]*\>/
+syntax match abiKeyword /\<icoulomb[+?:0-9]*\>/
+syntax match abiKeyword /\<icutcoul[+?:0-9]*\>/
+syntax match abiKeyword /\<ieig2rf[+?:0-9]*\>/
+syntax match abiKeyword /\<imgmov[+?:0-9]*\>/
+syntax match abiKeyword /\<imgwfstor[+?:0-9]*\>/
+syntax match abiKeyword /\<inclvkb[+?:0-9]*\>/
+syntax match abiKeyword /\<intxc[+?:0-9]*\>/
+syntax match abiKeyword /\<iomode[+?:0-9]*\>/
+syntax match abiKeyword /\<ionmov[+?:0-9]*\>/
+syntax match abiKeyword /\<iprcel[+?:0-9]*\>/
+syntax match abiKeyword /\<iprcfc[+?:0-9]*\>/
+syntax match abiKeyword /\<iqpt[+?:0-9]*\>/
+syntax match abiKeyword /\<irandom[+?:0-9]*\>/
+syntax match abiKeyword /\<ird1den[+?:0-9]*\>/
+syntax match abiKeyword /\<ird1wf[+?:0-9]*\>/
+syntax match abiKeyword /\<irdbscoup[+?:0-9]*\>/
+syntax match abiKeyword /\<irdbseig[+?:0-9]*\>/
+syntax match abiKeyword /\<irdbsreso[+?:0-9]*\>/
+syntax match abiKeyword /\<irdddb[+?:0-9]*\>/
+syntax match abiKeyword /\<irdddk[+?:0-9]*\>/
+syntax match abiKeyword /\<irdden[+?:0-9]*\>/
+syntax match abiKeyword /\<irddvdb[+?:0-9]*\>/
+syntax match abiKeyword /\<irdefmas[+?:0-9]*\>/
+syntax match abiKeyword /\<irdhaydock[+?:0-9]*\>/
+syntax match abiKeyword /\<irdqps[+?:0-9]*\>/
+syntax match abiKeyword /\<irdscr[+?:0-9]*\>/
+syntax match abiKeyword /\<irdsuscep[+?:0-9]*\>/
+syntax match abiKeyword /\<irdvdw[+?:0-9]*\>/
+syntax match abiKeyword /\<irdwfk[+?:0-9]*\>/
+syntax match abiKeyword /\<irdwfkfine[+?:0-9]*\>/
+syntax match abiKeyword /\<irdwfq[+?:0-9]*\>/
+syntax match abiKeyword /\<iscf[+?:0-9]*\>/
+syntax match abiKeyword /\<isecur[+?:0-9]*\>/
+syntax match abiKeyword /\<istatimg[+?:0-9]*\>/
+syntax match abiKeyword /\<istatr[+?:0-9]*\>/
+syntax match abiKeyword /\<istatshft[+?:0-9]*\>/
+syntax match abiKeyword /\<istwfk[+?:0-9]*\>/
+syntax match abiKeyword /\<ixc[+?:0-9]*\>/
+syntax match abiKeyword /\<ixc_sigma[+?:0-9]*\>/
+syntax match abiKeyword /\<ixcpositron[+?:0-9]*\>/
+syntax match abiKeyword /\<ixcrot[+?:0-9]*\>/
+syntax match abiKeyword /\<jdtset[+?:0-9]*\>/
+syntax match abiKeyword /\<jellslab[+?:0-9]*\>/
+syntax match abiKeyword /\<jfielddir[+?:0-9]*\>/
+syntax match abiKeyword /\<jpawu[+?:0-9]*\>/
+syntax match abiKeyword /\<kberry[+?:0-9]*\>/
+syntax match abiKeyword /\<kpt[+?:0-9]*\>/
+syntax match abiKeyword /\<kptbounds[+?:0-9]*\>/
+syntax match abiKeyword /\<kptgw[+?:0-9]*\>/
+syntax match abiKeyword /\<kptnrm[+?:0-9]*\>/
+syntax match abiKeyword /\<kptns[+?:0-9]*\>/
+syntax match abiKeyword /\<kptns_hf[+?:0-9]*\>/
+syntax match abiKeyword /\<kptopt[+?:0-9]*\>/
+syntax match abiKeyword /\<kptrlatt[+?:0-9]*\>/
+syntax match abiKeyword /\<kptrlen[+?:0-9]*\>/
+syntax match abiKeyword /\<kssform[+?:0-9]*\>/
+syntax match abiKeyword /\<ldaminushalf[+?:0-9]*\>/
+syntax match abiKeyword /\<lexexch[+?:0-9]*\>/
+syntax match abiKeyword /\<localrdwf[+?:0-9]*\>/
+syntax match abiKeyword /\<lotf_classic[+?:0-9]*\>/
+syntax match abiKeyword /\<lotf_nitex[+?:0-9]*\>/
+syntax match abiKeyword /\<lotf_nneigx[+?:0-9]*\>/
+syntax match abiKeyword /\<lotf_version[+?:0-9]*\>/
+syntax match abiKeyword /\<lpawu[+?:0-9]*\>/
+syntax match abiKeyword /\<lw_flexo[+?:0-9]*\>/
+syntax match abiKeyword /\<lw_qdrpl[+?:0-9]*\>/
+syntax match abiKeyword /\<macro_uj[+?:0-9]*\>/
+syntax match abiKeyword /\<magcon_lambda[+?:0-9]*\>/
+syntax match abiKeyword /\<magconon[+?:0-9]*\>/
+syntax match abiKeyword /\<max_ncpus[+?:0-9]*\>/
+syntax match abiKeyword /\<maxestep[+?:0-9]*\>/
+syntax match abiKeyword /\<maxnsym[+?:0-9]*\>/
+syntax match abiKeyword /\<mband[+?:0-9]*\>/
+syntax match abiKeyword /\<mbpt_sciss[+?:0-9]*\>/
+syntax match abiKeyword /\<mdf_epsinf[+?:0-9]*\>/
+syntax match abiKeyword /\<mdtemp[+?:0-9]*\>/
+syntax match abiKeyword /\<mdwall[+?:0-9]*\>/
+syntax match abiKeyword /\<mem_test[+?:0-9]*\>/
+syntax match abiKeyword /\<mep_mxstep[+?:0-9]*\>/
+syntax match abiKeyword /\<mep_solver[+?:0-9]*\>/
+syntax match abiKeyword /\<mixprec[+?:0-9]*\>/
+syntax match abiKeyword /\<mgfft[+?:0-9]*\>/
+syntax match abiKeyword /\<mgfftdg[+?:0-9]*\>/
+syntax match abiKeyword /\<mixalch[+?:0-9]*\>/
+syntax match abiKeyword /\<mixesimgf[+?:0-9]*\>/
+syntax match abiKeyword /\<mpw[+?:0-9]*\>/
+syntax match abiKeyword /\<mqgrid[+?:0-9]*\>/
+syntax match abiKeyword /\<mqgriddg[+?:0-9]*\>/
+syntax match abiKeyword /\<natcon[+?:0-9]*\>/
+syntax match abiKeyword /\<natfix[+?:0-9]*\>/
+syntax match abiKeyword /\<natfixx[+?:0-9]*\>/
+syntax match abiKeyword /\<natfixy[+?:0-9]*\>/
+syntax match abiKeyword /\<natfixz[+?:0-9]*\>/
+syntax match abiKeyword /\<natom[+?:0-9]*\>/
+syntax match abiKeyword /\<natpawu[+?:0-9]*\>/
+syntax match abiKeyword /\<natrd[+?:0-9]*\>/
+syntax match abiKeyword /\<natsph[+?:0-9]*\>/
+syntax match abiKeyword /\<natsph_extra[+?:0-9]*\>/
+syntax match abiKeyword /\<natvshift[+?:0-9]*\>/
+syntax match abiKeyword /\<nband[+?:0-9]*\>/
+syntax match abiKeyword /\<nbandhf[+?:0-9]*\>/
+syntax match abiKeyword /\<nbandkss[+?:0-9]*\>/
+syntax match abiKeyword /\<nbdblock[+?:0-9]*\>/
+syntax match abiKeyword /\<nbdbuf[+?:0-9]*\>/
+syntax match abiKeyword /\<nberry[+?:0-9]*\>/
+syntax match abiKeyword /\<nc_xccc_gspace[+?:0-9]*\>/
+syntax match abiKeyword /\<nconeq[+?:0-9]*\>/
+syntax match abiKeyword /\<nctime[+?:0-9]*\>/
+syntax match abiKeyword /\<ndivk[+?:0-9]*\>/
+syntax match abiKeyword /\<ndivsm[+?:0-9]*\>/
+syntax match abiKeyword /\<ndtset[+?:0-9]*\>/
+syntax match abiKeyword /\<ndynimage[+?:0-9]*\>/
+syntax match abiKeyword /\<neb_algo[+?:0-9]*\>/
+syntax match abiKeyword /\<neb_spring[+?:0-9]*\>/
+syntax match abiKeyword /\<nelect[+?:0-9]*\>/
+syntax match abiKeyword /\<nfft[+?:0-9]*\>/
+syntax match abiKeyword /\<nfftdg[+?:0-9]*\>/
+syntax match abiKeyword /\<nfreqim[+?:0-9]*\>/
+syntax match abiKeyword /\<nfreqmidm[+?:0-9]*\>/
+syntax match abiKeyword /\<nfreqre[+?:0-9]*\>/
+syntax match abiKeyword /\<nfreqsp[+?:0-9]*\>/
+syntax match abiKeyword /\<ngfft[+?:0-9]*\>/
+syntax match abiKeyword /\<ngfftdg[+?:0-9]*\>/
+syntax match abiKeyword /\<ngkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<ngqpt[+?:0-9]*\>/
+syntax match abiKeyword /\<nimage[+?:0-9]*\>/
+syntax match abiKeyword /\<nkpath[+?:0-9]*\>/
+syntax match abiKeyword /\<nkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<nkptgw[+?:0-9]*\>/
+syntax match abiKeyword /\<nkpthf[+?:0-9]*\>/
+syntax match abiKeyword /\<nline[+?:0-9]*\>/
+syntax match abiKeyword /\<nloc_alg[+?:0-9]*\>/
+syntax match abiKeyword /\<nloc_mem[+?:0-9]*\>/
+syntax match abiKeyword /\<nnos[+?:0-9]*\>/
+syntax match abiKeyword /\<nnsclo[+?:0-9]*\>/
+syntax match abiKeyword /\<nnsclohf[+?:0-9]*\>/
+syntax match abiKeyword /\<nobj[+?:0-9]*\>/
+syntax match abiKeyword /\<nomegasf[+?:0-9]*\>/
+syntax match abiKeyword /\<nomegasi[+?:0-9]*\>/
+syntax match abiKeyword /\<nomegasrd[+?:0-9]*\>/
+syntax match abiKeyword /\<nonlinear_info[+?:0-9]*\>/
+syntax match abiKeyword /\<normpawu[+?:0-9]*\>/
+syntax match abiKeyword /\<noseinert[+?:0-9]*\>/
+syntax match abiKeyword /\<np_slk[+?:0-9]*\>/
+syntax match abiKeyword /\<npband[+?:0-9]*\>/
+syntax match abiKeyword /\<npfft[+?:0-9]*\>/
+syntax match abiKeyword /\<nphf[+?:0-9]*\>/
+syntax match abiKeyword /\<npimage[+?:0-9]*\>/
+syntax match abiKeyword /\<npkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<nppert[+?:0-9]*\>/
+syntax match abiKeyword /\<npsp[+?:0-9]*\>/
+syntax match abiKeyword /\<npspalch[+?:0-9]*\>/
+syntax match abiKeyword /\<npspinor[+?:0-9]*\>/
+syntax match abiKeyword /\<npulayit[+?:0-9]*\>/
+syntax match abiKeyword /\<npvel[+?:0-9]*\>/
+syntax match abiKeyword /\<npweps[+?:0-9]*\>/
+syntax match abiKeyword /\<npwkss[+?:0-9]*\>/
+syntax match abiKeyword /\<npwsigx[+?:0-9]*\>/
+syntax match abiKeyword /\<npwwfn[+?:0-9]*\>/
+syntax match abiKeyword /\<nqpt[+?:0-9]*\>/
+syntax match abiKeyword /\<nqptdm[+?:0-9]*\>/
+syntax match abiKeyword /\<nscforder[+?:0-9]*\>/
+syntax match abiKeyword /\<nshiftk[+?:0-9]*\>/
+syntax match abiKeyword /\<nshiftq[+?:0-9]*\>/
+syntax match abiKeyword /\<nspden[+?:0-9]*\>/
+syntax match abiKeyword /\<nspinor[+?:0-9]*\>/
+syntax match abiKeyword /\<nsppol[+?:0-9]*\>/
+syntax match abiKeyword /\<nstep[+?:0-9]*\>/
+syntax match abiKeyword /\<nsym[+?:0-9]*\>/
+syntax match abiKeyword /\<ntime[+?:0-9]*\>/
+syntax match abiKeyword /\<ntimimage[+?:0-9]*\>/
+syntax match abiKeyword /\<ntypalch[+?:0-9]*\>/
+syntax match abiKeyword /\<ntypat[+?:0-9]*\>/
+syntax match abiKeyword /\<ntyppure[+?:0-9]*\>/
+syntax match abiKeyword /\<nucdipmom[+?:0-9]*\>/
+syntax match abiKeyword /\<nwfshist[+?:0-9]*\>/
+syntax match abiKeyword /\<nzchempot[+?:0-9]*\>/
+syntax match abiKeyword /\<objaat[+?:0-9]*\>/
+syntax match abiKeyword /\<objaax[+?:0-9]*\>/
+syntax match abiKeyword /\<objan[+?:0-9]*\>/
+syntax match abiKeyword /\<objarf[+?:0-9]*\>/
+syntax match abiKeyword /\<objaro[+?:0-9]*\>/
+syntax match abiKeyword /\<objatr[+?:0-9]*\>/
+syntax match abiKeyword /\<objbat[+?:0-9]*\>/
+syntax match abiKeyword /\<objbax[+?:0-9]*\>/
+syntax match abiKeyword /\<objbn[+?:0-9]*\>/
+syntax match abiKeyword /\<objbrf[+?:0-9]*\>/
+syntax match abiKeyword /\<objbro[+?:0-9]*\>/
+syntax match abiKeyword /\<objbtr[+?:0-9]*\>/
+syntax match abiKeyword /\<occ[+?:0-9]*\>/
+syntax match abiKeyword /\<occopt[+?:0-9]*\>/
+syntax match abiKeyword /\<omegasimax[+?:0-9]*\>/
+syntax match abiKeyword /\<omegasrdmax[+?:0-9]*\>/
+syntax match abiKeyword /\<optcell[+?:0-9]*\>/
+syntax match abiKeyword /\<optdriver[+?:0-9]*\>/
+syntax match abiKeyword /\<optforces[+?:0-9]*\>/
+syntax match abiKeyword /\<optnlxccc[+?:0-9]*\>/
+syntax match abiKeyword /\<optstress[+?:0-9]*\>/
+syntax match abiKeyword /\<orbmag[+?:0-9]*\>/
+syntax match abiKeyword /\<ortalg[+?:0-9]*\>/
+syntax match abiKeyword /\<papiopt[+?:0-9]*\>/
+syntax match abiKeyword /\<paral_atom[+?:0-9]*\>/
+syntax match abiKeyword /\<paral_kgb[+?:0-9]*\>/
+syntax match abiKeyword /\<paral_rf[+?:0-9]*\>/
+syntax match abiKeyword /\<pawcpxocc[+?:0-9]*\>/
+syntax match abiKeyword /\<pawcross[+?:0-9]*\>/
+syntax match abiKeyword /\<pawecutdg[+?:0-9]*\>/
+syntax match abiKeyword /\<pawfatbnd[+?:0-9]*\>/
+syntax match abiKeyword /\<pawlcutd[+?:0-9]*\>/
+syntax match abiKeyword /\<pawlmix[+?:0-9]*\>/
+syntax match abiKeyword /\<pawmixdg[+?:0-9]*\>/
+syntax match abiKeyword /\<pawnhatxc[+?:0-9]*\>/
+syntax match abiKeyword /\<pawnphi[+?:0-9]*\>/
+syntax match abiKeyword /\<pawntheta[+?:0-9]*\>/
+syntax match abiKeyword /\<pawnzlm[+?:0-9]*\>/
+syntax match abiKeyword /\<pawoptmix[+?:0-9]*\>/
+syntax match abiKeyword /\<pawoptosc[+?:0-9]*\>/
+syntax match abiKeyword /\<pawovlp[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprt_b[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprt_k[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprtden[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprtdos[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprtvol[+?:0-9]*\>/
+syntax match abiKeyword /\<pawprtwf[+?:0-9]*\>/
+syntax match abiKeyword /\<pawspnorb[+?:0-9]*\>/
+syntax match abiKeyword /\<pawstgylm[+?:0-9]*\>/
+syntax match abiKeyword /\<pawsushat[+?:0-9]*\>/
+syntax match abiKeyword /\<pawujat[+?:0-9]*\>/
+syntax match abiKeyword /\<pawujrad[+?:0-9]*\>/
+syntax match abiKeyword /\<pawujv[+?:0-9]*\>/
+syntax match abiKeyword /\<pawusecp[+?:0-9]*\>/
+syntax match abiKeyword /\<pawxcdev[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_intmeth[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_ndivsm[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_ngqpt[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_nqpath[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_nqshift[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_qpath[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_qshift[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_smear[+?:0-9]*\>/
+syntax match abiKeyword /\<ph_wstep[+?:0-9]*\>/
+syntax match abiKeyword /\<pimass[+?:0-9]*\>/
+syntax match abiKeyword /\<pimd_constraint[+?:0-9]*\>/
+syntax match abiKeyword /\<pitransform[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_bandf[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_bandi[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_compute[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_iatom[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_it[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_lcalc[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_natom[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_nbl[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_nt[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_projcalc[+?:0-9]*\>/
+syntax match abiKeyword /\<plowan_realspace[+?:0-9]*\>/
+syntax match abiKeyword /\<polcen[+?:0-9]*\>/
+syntax match abiKeyword /\<posdoppler[+?:0-9]*\>/
+syntax match abiKeyword /\<positron[+?:0-9]*\>/
+syntax match abiKeyword /\<posnstep[+?:0-9]*\>/
+syntax match abiKeyword /\<posocc[+?:0-9]*\>/
+syntax match abiKeyword /\<postoldfe[+?:0-9]*\>/
+syntax match abiKeyword /\<postoldff[+?:0-9]*\>/
+syntax match abiKeyword /\<ppmfrq[+?:0-9]*\>/
+syntax match abiKeyword /\<ppmodel[+?:0-9]*\>/
+syntax match abiKeyword /\<prepalw[+?:0-9]*\>/
+syntax match abiKeyword /\<prepanl[+?:0-9]*\>/
+syntax match abiKeyword /\<prepgkk[+?:0-9]*\>/
+syntax match abiKeyword /\<prepscphon[+?:0-9]*\>/
+syntax match abiKeyword /\<prt1dm[+?:0-9]*\>/
+syntax match abiKeyword /\<prtatlist[+?:0-9]*\>/
+syntax match abiKeyword /\<prtbbb[+?:0-9]*\>/
+syntax match abiKeyword /\<prtbltztrp[+?:0-9]*\>/
+syntax match abiKeyword /\<prtcif[+?:0-9]*\>/
+syntax match abiKeyword /\<prtden[+?:0-9]*\>/
+syntax match abiKeyword /\<prtdensph[+?:0-9]*\>/
+syntax match abiKeyword /\<prtdipole[+?:0-9]*\>/
+syntax match abiKeyword /\<prtdos[+?:0-9]*\>/
+syntax match abiKeyword /\<prtdosm[+?:0-9]*\>/
+syntax match abiKeyword /\<prtebands[+?:0-9]*\>/
+syntax match abiKeyword /\<prtefg[+?:0-9]*\>/
+syntax match abiKeyword /\<prtefmas[+?:0-9]*\>/
+syntax match abiKeyword /\<prteig[+?:0-9]*\>/
+syntax match abiKeyword /\<prtelf[+?:0-9]*\>/
+syntax match abiKeyword /\<prtfc[+?:0-9]*\>/
+syntax match abiKeyword /\<prtfull1wf[+?:0-9]*\>/
+syntax match abiKeyword /\<prtfsurf[+?:0-9]*\>/
+syntax match abiKeyword /\<prtgden[+?:0-9]*\>/
+syntax match abiKeyword /\<prtgeo[+?:0-9]*\>/
+syntax match abiKeyword /\<prtgkk[+?:0-9]*\>/
+syntax match abiKeyword /\<prtgsr[+?:0-9]*\>/
+syntax match abiKeyword /\<prtkden[+?:0-9]*\>/
+syntax match abiKeyword /\<prtkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<prtlden[+?:0-9]*\>/
+syntax match abiKeyword /\<prtnabla[+?:0-9]*\>/
+syntax match abiKeyword /\<prtnest[+?:0-9]*\>/
+syntax match abiKeyword /\<prtphbands[+?:0-9]*\>/
+syntax match abiKeyword /\<prtphdos[+?:0-9]*\>/
+syntax match abiKeyword /\<prtphsurf[+?:0-9]*\>/
+syntax match abiKeyword /\<prtposcar[+?:0-9]*\>/
+syntax match abiKeyword /\<prtpot[+?:0-9]*\>/
+syntax match abiKeyword /\<prtprocar[+?:0-9]*\>/
+syntax match abiKeyword /\<prtpsps[+?:0-9]*\>/
+syntax match abiKeyword /\<prtspcur[+?:0-9]*\>/
+syntax match abiKeyword /\<prtstm[+?:0-9]*\>/
+syntax match abiKeyword /\<prtsuscep[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvclmb[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvdw[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvha[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvhxc[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvol[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvolimg[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvpsp[+?:0-9]*\>/
+syntax match abiKeyword /\<prtvxc[+?:0-9]*\>/
+syntax match abiKeyword /\<prtwant[+?:0-9]*\>/
+syntax match abiKeyword /\<prtwf[+?:0-9]*\>/
+syntax match abiKeyword /\<prtwf_full[+?:0-9]*\>/
+syntax match abiKeyword /\<prtxml[+?:0-9]*\>/
+syntax match abiKeyword /\<ptcharge[+?:0-9]*\>/
+syntax match abiKeyword /\<ptgroupma[+?:0-9]*\>/
+syntax match abiKeyword /\<pvelmax[+?:0-9]*\>/
+syntax match abiKeyword /\<pw_unbal_thresh[+?:0-9]*\>/
+syntax match abiKeyword /\<qmass[+?:0-9]*\>/
+syntax match abiKeyword /\<qprtrb[+?:0-9]*\>/
+syntax match abiKeyword /\<qpt[+?:0-9]*\>/
+syntax match abiKeyword /\<qptdm[+?:0-9]*\>/
+syntax match abiKeyword /\<qptn[+?:0-9]*\>/
+syntax match abiKeyword /\<qptnrm[+?:0-9]*\>/
+syntax match abiKeyword /\<qptopt[+?:0-9]*\>/
+syntax match abiKeyword /\<qptrlatt[+?:0-9]*\>/
+syntax match abiKeyword /\<quadmom[+?:0-9]*\>/
+syntax match abiKeyword /\<random_atpos[+?:0-9]*\>/
+syntax match abiKeyword /\<ratsm[+?:0-9]*\>/
+syntax match abiKeyword /\<ratsph[+?:0-9]*\>/
+syntax match abiKeyword /\<ratsph_extra[+?:0-9]*\>/
+syntax match abiKeyword /\<rcut[+?:0-9]*\>/
+syntax match abiKeyword /\<recefermi[+?:0-9]*\>/
+syntax match abiKeyword /\<recgratio[+?:0-9]*\>/
+syntax match abiKeyword /\<recnpath[+?:0-9]*\>/
+syntax match abiKeyword /\<recnrec[+?:0-9]*\>/
+syntax match abiKeyword /\<recptrott[+?:0-9]*\>/
+syntax match abiKeyword /\<recrcut[+?:0-9]*\>/
+syntax match abiKeyword /\<rectesteg[+?:0-9]*\>/
+syntax match abiKeyword /\<rectolden[+?:0-9]*\>/
+syntax match abiKeyword /\<red_dfield[+?:0-9]*\>/
+syntax match abiKeyword /\<red_efield[+?:0-9]*\>/
+syntax match abiKeyword /\<red_efieldbar[+?:0-9]*\>/
+syntax match abiKeyword /\<restartxf[+?:0-9]*\>/
+syntax match abiKeyword /\<rf2_dkdk[+?:0-9]*\>/
+syntax match abiKeyword /\<rf2_dkde[+?:0-9]*\>/
+syntax match abiKeyword /\<rf2_pert1_dir[+?:0-9]*\>/
+syntax match abiKeyword /\<rf2_pert2_dir[+?:0-9]*\>/
+syntax match abiKeyword /\<rfasr[+?:0-9]*\>/
+syntax match abiKeyword /\<rfatpol[+?:0-9]*\>/
+syntax match abiKeyword /\<rfddk[+?:0-9]*\>/
+syntax match abiKeyword /\<rfdir[+?:0-9]*\>/
+syntax match abiKeyword /\<rfelfd[+?:0-9]*\>/
+syntax match abiKeyword /\<rfmagn[+?:0-9]*\>/
+syntax match abiKeyword /\<rfmeth[+?:0-9]*\>/
+syntax match abiKeyword /\<rfphon[+?:0-9]*\>/
+syntax match abiKeyword /\<rfstrs[+?:0-9]*\>/
+syntax match abiKeyword /\<rfuser[+?:0-9]*\>/
+syntax match abiKeyword /\<rhoqpmix[+?:0-9]*\>/
+syntax match abiKeyword /\<rprim[+?:0-9]*\>/
+syntax match abiKeyword /\<rprimd[+?:0-9]*\>/
+syntax match abiKeyword /\<scalecart[+?:0-9]*\>/
+syntax match abiKeyword /\<scphon_supercell[+?:0-9]*\>/
+syntax match abiKeyword /\<scphon_temp[+?:0-9]*\>/
+syntax match abiKeyword /\<shiftk[+?:0-9]*\>/
+syntax match abiKeyword /\<shiftq[+?:0-9]*\>/
+syntax match abiKeyword /\<signperm[+?:0-9]*\>/
+syntax match abiKeyword /\<slabwsrad[+?:0-9]*\>/
+syntax match abiKeyword /\<slabzbeg[+?:0-9]*\>/
+syntax match abiKeyword /\<slabzend[+?:0-9]*\>/
+syntax match abiKeyword /\<slk_rankpp[+?:0-9]*\>/
+syntax match abiKeyword /\<smdelta[+?:0-9]*\>/
+syntax match abiKeyword /\<so_psp[+?:0-9]*\>/
+syntax match abiKeyword /\<spbroad[+?:0-9]*\>/
+syntax match abiKeyword /\<spgaxor[+?:0-9]*\>/
+syntax match abiKeyword /\<spgorig[+?:0-9]*\>/
+syntax match abiKeyword /\<spgroup[+?:0-9]*\>/
+syntax match abiKeyword /\<spgroupma[+?:0-9]*\>/
+syntax match abiKeyword /\<spinat[+?:0-9]*\>/
+syntax match abiKeyword /\<spinmagntarget[+?:0-9]*\>/
+syntax match abiKeyword /\<spmeth[+?:0-9]*\>/
+syntax match abiKeyword /\<spnorbscl[+?:0-9]*\>/
+syntax match abiKeyword /\<stmbias[+?:0-9]*\>/
+syntax match abiKeyword /\<strfact[+?:0-9]*\>/
+syntax match abiKeyword /\<string_algo[+?:0-9]*\>/
+syntax match abiKeyword /\<strprecon[+?:0-9]*\>/
+syntax match abiKeyword /\<strtarget[+?:0-9]*\>/
+syntax match abiKeyword /\<symafm[+?:0-9]*\>/
+syntax match abiKeyword /\<symchi[+?:0-9]*\>/
+syntax match abiKeyword /\<symdynmat[+?:0-9]*\>/
+syntax match abiKeyword /\<symmorphi[+?:0-9]*\>/
+syntax match abiKeyword /\<symrel[+?:0-9]*\>/
+syntax match abiKeyword /\<symsigma[+?:0-9]*\>/
+syntax match abiKeyword /\<td_maxene[+?:0-9]*\>/
+syntax match abiKeyword /\<td_mexcit[+?:0-9]*\>/
+syntax match abiKeyword /\<tfkinfunc[+?:0-9]*\>/
+syntax match abiKeyword /\<tfw_toldfe[+?:0-9]*\>/
+syntax match abiKeyword /\<tim1rev[+?:0-9]*\>/
+syntax match abiKeyword /\<timopt[+?:0-9]*\>/
+syntax match abiKeyword /\<tl_nprccg[+?:0-9]*\>/
+syntax match abiKeyword /\<tl_radius[+?:0-9]*\>/
+syntax match abiKeyword /\<tnons[+?:0-9]*\>/
+syntax match abiKeyword /\<toldfe[+?:0-9]*\>/
+syntax match abiKeyword /\<toldff[+?:0-9]*\>/
+syntax match abiKeyword /\<tolimg[+?:0-9]*\>/
+syntax match abiKeyword /\<tolmxde[+?:0-9]*\>/
+syntax match abiKeyword /\<tolmxf[+?:0-9]*\>/
+syntax match abiKeyword /\<tolrde[+?:0-9]*\>/
+syntax match abiKeyword /\<tolrff[+?:0-9]*\>/
+syntax match abiKeyword /\<tolsym[+?:0-9]*\>/
+syntax match abiKeyword /\<tolvrs[+?:0-9]*\>/
+syntax match abiKeyword /\<tolwfr[+?:0-9]*\>/
+syntax match abiKeyword /\<tphysel[+?:0-9]*\>/
+syntax match abiKeyword /\<tsmear[+?:0-9]*\>/
+syntax match abiKeyword /\<typat[+?:0-9]*\>/
+syntax match abiKeyword /\<ucrpa[+?:0-9]*\>/
+syntax match abiKeyword /\<ucrpa_bands[+?:0-9]*\>/
+syntax match abiKeyword /\<ucrpa_window[+?:0-9]*\>/
+syntax match abiKeyword /\<udtset[+?:0-9]*\>/
+syntax match abiKeyword /\<upawu[+?:0-9]*\>/
+syntax match abiKeyword /\<use_gemm_nonlop[+?:0-9]*\>/
+syntax match abiKeyword /\<use_gpu_cuda[+?:0-9]*\>/
+syntax match abiKeyword /\<use_nonscf_gkk[+?:0-9]*\>/
+syntax match abiKeyword /\<use_slk[+?:0-9]*\>/
+syntax match abiKeyword /\<usedmatpu[+?:0-9]*\>/
+syntax match abiKeyword /\<usedmft[+?:0-9]*\>/
+syntax match abiKeyword /\<useexexch[+?:0-9]*\>/
+syntax match abiKeyword /\<usefock[+?:0-9]*\>/
+syntax match abiKeyword /\<usekden[+?:0-9]*\>/
+syntax match abiKeyword /\<usepaw[+?:0-9]*\>/
+syntax match abiKeyword /\<usepawu[+?:0-9]*\>/
+syntax match abiKeyword /\<usepead[+?:0-9]*\>/
+syntax match abiKeyword /\<usepotzero[+?:0-9]*\>/
+syntax match abiKeyword /\<userec[+?:0-9]*\>/
+syntax match abiKeyword /\<useria[+?:0-9]*\>/
+syntax match abiKeyword /\<userib[+?:0-9]*\>/
+syntax match abiKeyword /\<useric[+?:0-9]*\>/
+syntax match abiKeyword /\<userid[+?:0-9]*\>/
+syntax match abiKeyword /\<userie[+?:0-9]*\>/
+syntax match abiKeyword /\<userra[+?:0-9]*\>/
+syntax match abiKeyword /\<userrb[+?:0-9]*\>/
+syntax match abiKeyword /\<userrc[+?:0-9]*\>/
+syntax match abiKeyword /\<userrd[+?:0-9]*\>/
+syntax match abiKeyword /\<userre[+?:0-9]*\>/
+syntax match abiKeyword /\<usewvl[+?:0-9]*\>/
+syntax match abiKeyword /\<usexcnhat[+?:0-9]*\>/
+syntax match abiKeyword /\<useylm[+?:0-9]*\>/
+syntax match abiKeyword /\<vaclst[+?:0-9]*\>/
+syntax match abiKeyword /\<vacnum[+?:0-9]*\>/
+syntax match abiKeyword /\<vacuum[+?:0-9]*\>/
+syntax match abiKeyword /\<vacwidth[+?:0-9]*\>/
+syntax match abiKeyword /\<vcutgeo[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_acutmin[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_aratio[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_damax[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_damin[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_dcut[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_dratio[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_dsoft[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_gcut[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_ndpts[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_ngpts[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_nqpts[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_nrpts[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_nsmooth[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_phisoft[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_qcut[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_qratio[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_rcut[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_rsoft[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_threshold[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_tolerance[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_tweaks[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_df_zab[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_nfrag[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_supercell[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_tol[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_tol_3bt[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_typfrag[+?:0-9]*\>/
+syntax match abiKeyword /\<vdw_xc[+?:0-9]*\>/
+syntax match abiKeyword /\<vel[+?:0-9]*\>/
+syntax match abiKeyword /\<vel_cell[+?:0-9]*\>/
+syntax match abiKeyword /\<vis[+?:0-9]*\>/
+syntax match abiKeyword /\<vprtrb[+?:0-9]*\>/
+syntax match abiKeyword /\<w90iniprj[+?:0-9]*\>/
+syntax match abiKeyword /\<w90prtunk[+?:0-9]*\>/
+syntax match abiKeyword /\<wfmix[+?:0-9]*\>/
+syntax match abiKeyword /\<wfoptalg[+?:0-9]*\>/
+syntax match abiKeyword /\<wtatcon[+?:0-9]*\>/
+syntax match abiKeyword /\<wtk[+?:0-9]*\>/
+syntax match abiKeyword /\<wtq[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_bigdft_comp[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_crmult[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_frmult[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_hgrid[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_ngauss[+?:0-9]*\>/
+syntax match abiKeyword /\<wvl_nprccg[+?:0-9]*\>/
+syntax match abiKeyword /\<xc_denpos[+?:0-9]*\>/
+syntax match abiKeyword /\<xc_tb09_c[+?:0-9]*\>/
+syntax match abiKeyword /\<xcart[+?:0-9]*\>/
+syntax match abiKeyword /\<xclevel[+?:0-9]*\>/
+syntax match abiKeyword /\<xred[+?:0-9]*\>/
+syntax match abiKeyword /\<xredsph_extra[+?:0-9]*\>/
+syntax match abiKeyword /\<xyzfile[+?:0-9]*\>/
+syntax match abiKeyword /\<zcut[+?:0-9]*\>/
+syntax match abiKeyword /\<zeemanfield[+?:0-9]*\>/
+syntax match abiKeyword /\<ziontypat[+?:0-9]*\>/
+syntax match abiKeyword /\<znucl[+?:0-9]*\>/
+syntax match abiKeyword /\<tmesh[+?:0-9]*\>/
+syntax match abiKeyword /\<prtkbff[+?:0-9]*\>/
+syntax match abiKeyword /\<sigma_ngkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<sigma_nshiftk[+?:0-9]*\>/
+syntax match abiKeyword /\<sigma_shiftk[+?:0-9]*\>/
+syntax match abiKeyword /\<wfk_task[+?:0-9]*\>/
+syntax match abiKeyword /\<sigma_bsum_range[+?:0-9]*\>/
+syntax match abiKeyword /\<prteliash[+?:0-9]*\>/
+syntax match abiKeyword /\<sigma_erange[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_tols_idelta[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_phrange[+?:0-9]*\>/
+syntax match abiKeyword /\<transport_ngkpt[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_restart[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_stern[+?:0-9]*\>/
+syntax match abiKeyword /\<getkerange_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<symv1scf[+?:0-9]*\>/
+syntax match abiKeyword /\<dvdb_add_lr[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_np_pqbks[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_use_ftinterp[+?:0-9]*\>/
+syntax match abiKeyword /\<getpot_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfk_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfkfine_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getwfq_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getddb_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getdvdb_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getden_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<getscr_filepath[+?:0-9]*\>/
+syntax match abiKeyword /\<eph_ecutosc[+?:0-9]*\>/
+syntax match abiKeyword /\<output_file[+?:0-9]*\>/
+syntax match abiKeyword /\<indata_prefix[+?:0-9]*\>/
+syntax match abiKeyword /\<outdata_prefix[+?:0-9]*\>/
+syntax match abiKeyword /\<tmpdata_prefix[+?:0-9]*\>/
+syntax match abiKeyword /\<pp_dirpath[+?:0-9]*\>/
+syntax match abiKeyword /\<supercell_latt[+?:0-9]*\>/
+syntax match abiKeyword /\<pseudos[+?:0-9]*\>/
+syntax match abiKeyword /\<structure[+?:0-9]*\>/
+highlight link abiKeyword Keyword
 
 let b:current_syntax = "abinit_input"
