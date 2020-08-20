@@ -8,9 +8,8 @@ endif
 
 " If it is some contiguous non blank thing that does not match other rule, it
 " is trash: misspelled keyword, typo etc...
-syntax match abiTrash nextgroup=abiInvalidStatement /^ \*[^# ]\+/
+syntax match abiTrash nextgroup=abiInvalidStatement /\w\+/
 highlight link abiTrash Error
-
 
 " Strings
 syntax region abiString contained start=+"+ skip=+\\"+ end=+"+
@@ -42,7 +41,6 @@ highlight link abiValidStatement Normal
 syntax match abiInvalidStatement contains=@abiStatement nextgroup=abiComment  / *[A-Za-z][^#]*/
 highlight link abiInvalidStatement Error
 
-syntax match abiBlank / \+/ nextgroup=abiKeyword,abiComment
 
 syntax match abiKeyword nextgroup=abiValidStatement /\<accuracy[+?:0-9]*\>/
 syntax match abiKeyword nextgroup=abiValidStatement /\<acell[+?:0-9]*\>/
@@ -867,6 +865,9 @@ highlight link abiKeyword Keyword
 
 syntax region abiComment start=/#/ end=/$/
 highlight link abiComment Comment
+
+" A line can
+syntax match abiLineStart /^/ skipwhite nextgroup=abiTrash,abiKeyword,abiNumber,abiConstant,abiComment
 
 " Abinit consider line longer than 264 columns as errorneous
 set colorcolumn=264
