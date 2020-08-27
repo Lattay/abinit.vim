@@ -24,17 +24,15 @@ syntax region abiString  start=+"+ skip=+\\"+ end=+"+
 highlight link abiString String
 
 " Integers
-syntax match abiNumber  /\<[+-]\?\d\+\(_\a\w*\)\=\>/
+syntax match abiNumber  /\<[+-]\?\d\+\>/
 " floating point number, without a decimal point
-syntax match abiNumber  /\<\d\+[deq][-+]\=\d\+\(_\a\w*\)\=\>/
+syntax match abiNumber  /\<\d\+[deqDEQ][-+]\=\d\+\>/
 " floating point number, starting with a decimal point
-syntax match abiNumber  /\.\d\+\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+syntax match abiNumber  /\.\d\+\([deqDEQ][-+]\=\d\+\)\=\>/
 " floating point number, no digits after decimal
-syntax match abiNumber  /\<\d\+\.\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
-" floating point number, D or Q exponents
-syntax match abiNumber  /\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+syntax match abiNumber  /\<\d\+\.\([deqDEQ][-+]\=\d\+\)\=\>/
 " floating point number
-syntax match abiNumber  /\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>/
+syntax match abiNumber  /\<\d\+\.\d\+\([deqDEQ][-+]\=\d\+\)\=\>/
 
 highlight link abiNumber Number
 
