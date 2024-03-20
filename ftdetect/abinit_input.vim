@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.in,in.* setfiletype abinit_input
+autocmd BufNewFile,BufRead *.in,in.*,*.abi setfiletype abinit_input
