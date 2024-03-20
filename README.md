@@ -5,14 +5,16 @@ Syntax highlighting for Abinit's file.
 Now supporting main input only.
 
 Features:
-- Recognise all input "variables" (as of 2020 Jul 20)
+- Recognize all input "variables" (last updated for Abinit 9.10.5, which is the
+  last production release)
 - highlight in red when a variable is not recognised
 - support comments
 
 ## How to install
 
 Easy way:
-Use [vim-plug](https://github.com/junegunn/vim-plug) or your favorite plugin manager and add the following to your plugin section:
+Use [vim-plug](https://github.com/junegunn/vim-plug) or your favorite plugin
+manager and add the following to your plugin section:
 ```vim
 Plug 'Lattay/abinit.vim'
 ```
